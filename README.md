@@ -33,7 +33,7 @@ Just execute [`TestRunner`](src/test/java/specs/petstore/TestRunner.java) as a J
 <img src="src/test/resources/petstore-report.jpg" height="750"/>
 
 ## Demo 2 - ASTM [UTM](https://www.unmannedairspace.info/emerging-regulations/astm-publishes-new-international-standard-addressing-uas-utm-performance-and-interoperability)
-* Protocol: https://github.com/astm-utm/Protocol/blob/master/utm.yaml
+* OAS spec: https://github.com/astm-utm/Protocol/blob/master/utm.yaml
 
 * [`index.feature`](src/test/java/specs/utm/index.feature) 
   * Here the test makes 2 calls, but one with a request payload that fails a business rule
