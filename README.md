@@ -46,3 +46,6 @@ Just execute [`TestRunner`](src/test/java/specs/petstore/TestRunner.java) as a J
 Just execute [`TestRunner`](src/test/java/specs/utm/TestRunner.java) as a JUnit test. Note how the second call failed with a readable error message.
 
 <img src="src/test/resources/utm-report.jpg" height="500"/>
+
+# Further Reading
+* [API Contract Testing - Visual Guide](https://www.linkedin.com/pulse/api-contract-testing-visual-guide-peter-thomas/)
