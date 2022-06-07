@@ -24,6 +24,7 @@ rules['/pet/{petId}'] = function() {
     } else {
         if (index === -1) {
             response.status = 404;
+            response.body = null;
         } else {
             response.body = session.pets[index];
         }
