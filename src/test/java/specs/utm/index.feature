@@ -1,4 +1,4 @@
-Feature:
+Feature: using https://github.com/astm-utm/Protocol/blob/master/utm.yaml
 
   Background:
     * def urlBase = 'http://localhost:' + karate.properties['server.port']
@@ -15,7 +15,7 @@ Feature:
                     center: { lat: 100, lng: 200 },
                     radius: { value: 50, units: 'M' }
                 },
-                outline_polygon: { vertices: {} },
+                outline_polygon: { vertices: [{ lat: 100, lng: 200 }] },
                 altitude_lower: {
                     value: 50,
                     reference: 'W84',
@@ -47,7 +47,7 @@ Feature:
                     center: { lat: 100, lng: 200 },
                     radius: { value: 50, units: 'M' }
                 },
-                outline_polygon: { vertices: {} },
+                outline_polygon: { vertices: [{ lat: 100, lng: 200 }] },
                 altitude_lower: {
                     value: 200,
                     reference: 'W84',

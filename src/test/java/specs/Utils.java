@@ -1,6 +1,8 @@
-package app;
+package specs;
 
 import com.intuit.karate.Match;
+import com.intuit.karate.graal.JsEngine;
+import com.intuit.karate.http.RequestCycle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +19,8 @@ public class Utils {
     }
 
     public Map<String, Object> matchEquals(Object actual, Object expected) {
-        Match.Result result = Match.execute(null, Match.Type.EQUALS, actual, expected);
+        JsEngine je = RequestCycle.get().getEngine();
+        Match.Result result = Match.execute(je, Match.Type.EQUALS, actual, expected);
         return result.toMap();
     }
 

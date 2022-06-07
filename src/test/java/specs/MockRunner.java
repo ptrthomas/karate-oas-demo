@@ -1,4 +1,4 @@
-package app;
+package specs;
 
 import com.intuit.karate.http.HttpServer;
 import com.intuit.karate.http.ServerConfig;
@@ -10,14 +10,18 @@ import java.util.Collections;
 public class MockRunner {
 
     @Test
-    void testServer() {
-        start(8080).waitSync();
+    void startPetstore() {
+        start("src/test/java/specs/petstore", 8080).waitSync();
     }
 
-    public static HttpServer start(int port) {
-        ServerConfig config = new ServerConfig("src/test/java/app")
-                .useGlobalSession(true)
-                .autoCreateSession(true);
+    @Test
+    void startUtm() {
+        start("src/test/java/specs/utm", 8080).waitSync();
+    }
+
+    public static HttpServer start(String root, int port) {
+        ServerConfig config = new ServerConfig(root)
+                .useGlobalSession(true);
         config.contextFactory(request -> {
             ServerContext context = new ServerContext(config, request, Collections.singletonMap("utils", Utils.INSTANCE));
             context.setApi(true);
