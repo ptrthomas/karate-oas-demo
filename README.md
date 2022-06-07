@@ -30,7 +30,7 @@ OAS file: https://petstore3.swagger.io
 ### Running
 Just execute [`TestRunner`](src/test/java/specs/petstore/TestRunner.java) as a JUnit test. Here is the result:
 
-<img src="src/test/resources/petstore-report.jpg" height="750"/>
+<img src="src/test/resources/petstore-report.jpg" height="600"/>
 
 ## Demo 2 - ASTM [UTM](https://www.unmannedairspace.info/emerging-regulations/astm-publishes-new-international-standard-addressing-uas-utm-performance-and-interoperability)
 * OAS spec: https://github.com/astm-utm/Protocol/blob/master/utm.yaml
