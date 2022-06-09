@@ -1,7 +1,8 @@
 # Karate OAS Demo
 
 ## Summary
-* a “smart” mock that can validate request payloads against the [OAS](https://www.openapis.org/) / spec
+* a “smart” mock that can validate request payloads against the [OAS](https://www.openapis.org/)
+* old versions of the OAS or Swagger files are also supported
 * custom rules can be added - e.g. `upperLimit <= lowerLimit`
 * you can tweak behavior or vary the response based on state (or stage within an end-user flow)
 * mock should run "locally" (`localhost`)
@@ -46,6 +47,13 @@ Just execute [`TestRunner`](src/test/java/specs/petstore/TestRunner.java) as a J
 Just execute [`TestRunner`](src/test/java/specs/utm/TestRunner.java) as a JUnit test. Note how the second call failed with a readable error message.
 
 <img src="src/test/resources/utm-report.jpg" height="500"/>
+
+## Demo 3 - Oracle Hospitality
+
+Swagger file: https://github.com/oracle/hospitality-api-docs/blob/main/rest-api-specs/property/rsv.json
+* [`index.feature`](src/test/java/specs/orahosp/rsv/index.feature)
+* [`index.js`](src/test/java/specs/orahosp/rsv/index.js) - machine-generated mock file
+* [`rules.js`](src/test/java/specs/orahosp/rsv/rules.js)
 
 # Further Reading
 * [API Contract Testing - Visual Guide](https://www.linkedin.com/pulse/api-contract-testing-visual-guide-peter-thomas/)

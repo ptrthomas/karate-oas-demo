@@ -1,7 +1,7 @@
 const paths = {};
 const checks = {};
 const samples = {};
-const errors = [];
+let errors = [];
 const rules = {};
 const handleInternal = function(path, methodInfo) {
     if (methodInfo.request) {
@@ -41,7 +41,7 @@ paths['/pet/{petId}/uploadImage'] = {"post":{"response":"ApiResponse"}};
 paths['/store/inventory'] = {"get":{"response":"sample4"}};
 paths['/store/order'] = {"post":{"request":"Order","response":"Order"}};
 paths['/store/order/{orderId}'] = {"get":{"response":"Order"},"delete":{}};
-paths['/user'] = {"post":{"request":"User"}};
+paths['/user'] = {"post":{"request":"User","response":"User"}};
 paths['/user/createWithList'] = {"post":{"request":"check11","response":"User"}};
 paths['/user/login'] = {"get":{"response":"sample8"}};
 paths['/user/logout'] = {"get":{}};
