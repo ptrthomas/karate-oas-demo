@@ -54,7 +54,6 @@ Just execute [`TestRunner`](src/test/java/specs/utm/TestRunner.java) as a JUnit 
 
 Similar to the Petstore demo, this shows how a sequence of API calls can be documented.
 
-Swagger file: https://github.com/oracle/hospitality-api-docs/blob/main/rest-api-specs/property/rsv.json
 * [`test.feature`](src/test/java/specs/travel/test.feature)
 * [`spec.js`](src/test/java/specs/travel/spec.js) - machine-generated mock file
 * [`rules.js`](src/test/java/specs/travel/rules.js)
