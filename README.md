@@ -55,13 +55,10 @@ Just execute [`TestRunner`](src/test/java/specs/utm/TestRunner.java) as a JUnit 
 Similar to the Petstore demo, this shows how a sequence of API calls can be documented.
 
 * [`test.feature`](src/test/java/specs/travel/test.feature)
-* [`spec.js`](src/test/java/specs/travel/spec.js) - machine-generated mock file
 * [`rules.js`](src/test/java/specs/travel/rules.js)
 
 What is interesting here is the human-friendly HTML that can be added to the report to describe the API further.
 The HTML templates ([`offers-get.html`](src/test/java/specs/travel/doc/offers-get.html) and [`orders-post.html`](src/test/java/specs/travel/doc/orders-post.html)) can dynamically refer to the HTTP response or any variable in the test.
-
-
 
 <img src="src/test/resources/travel-report.jpg" height="500"/>
 
