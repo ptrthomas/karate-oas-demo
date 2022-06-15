@@ -1,37 +1,8 @@
 const paths = {};
 const checks = {};
 const samples = {};
-const errors = [];
+let errors = [];
 const rules = {};
-const handleInternal = function(path, methodInfo) {
-    if (methodInfo.request) {
-        let result = utils.matchEquals(request.body, checks[methodInfo.request]);
-        if (!result.pass) errors.push(result.message);
-    }
-    if (methodInfo.response) {
-        response.body = samples[methodInfo.response];
-    }
-    let rule = rules[path];
-    if (rule) {
-        rule();
-    }
-    if (errors.length) {
-        response.body = errors.join('\n');
-        response.status = 400;
-    }
-};
-const handle = function() {
-    for (const [path, methods] of Object.entries(paths)) {
-        if (request.pathMatches(path)) {
-            const methodInfo = methods[request.method.toLowerCase()];
-            if (methodInfo) {
-                handleInternal(path, methodInfo);
-                return true;
-            }
-        }
-    }
-    return false;
-};
 
 paths['/dss/v1/operational_intent_references/query'] = {"post":{"request":"QueryOperationalIntentReferenceParameters","response":"QueryOperationalIntentReferenceResponse"}};
 paths['/dss/v1/operational_intent_references/{entityid}'] = {"get":{"response":"GetOperationalIntentReferenceResponse"},"put":{"request":"PutOperationalIntentReferenceParameters","response":"ChangeOperationalIntentReferenceResponse"}};
@@ -164,7 +135,3 @@ samples['PutOperationalIntentDetailsParameters'] = {"operational_intent_id":"03e
 samples['GetConstraintDetailsResponse'] = {"constraint":{"reference":{"id":"03e5572a-f733-49af-bc14-8a18bd53ee39","manager":"uss1","uss_availability":"Unknown","version":1,"time_start":{"value":"1985-04-12T23:20:50.52Z","format":"RFC3339"},"time_end":{"value":"1985-04-12T23:20:50.52Z","format":"RFC3339"},"uss_base_url":"https://uss.example.com/utm"},"details":{"volumes":[{"volume":{"outline_circle":{"center":{"lng":-118.456,"lat":34.123},"radius":{"value":300.183,"units":"M"}},"outline_polygon":{"vertices":[{"lng":-118.456,"lat":34.123}]},"altitude_lower":{"value":0.0,"reference":"W84","units":"M"},"altitude_upper":{"value":0.0,"reference":"W84","units":"M"}}}]}}};
 samples['PutConstraintDetailsParameters'] = {"constraint_id":"03e5572a-f733-49af-bc14-8a18bd53ee39","subscriptions":[{"subscription_id":"03e5572a-f733-49af-bc14-8a18bd53ee39","notification_index":0}]};
 samples['USSLogSet'] = {"messages":[{"url":"","method":"","recorder_role":"Client","request_time":{"value":"1985-04-12T23:20:50.52Z","format":"RFC3339"}}],"operator_notifications":[{"triggering_event_time":{"value":"1985-04-12T23:20:50.52Z","format":"RFC3339"},"notification_time":{"value":"1985-04-12T23:20:50.52Z","format":"RFC3339"},"notification_triggering_event":"GEN0400"}],"operator_inputs":[{"triggering_event_time":{"value":"1985-04-12T23:20:50.52Z","format":"RFC3339"},"operational_intent_id":"03e5572a-f733-49af-bc14-8a18bd53ee39","input_triggering_event":"OPIN0040"}],"operator_associations":[{"operational_intent_id":"03e5572a-f733-49af-bc14-8a18bd53ee39","operator_id":""}],"planning_attempts":[{"time":{"value":"1985-04-12T23:20:50.52Z","format":"RFC3339"},"ovns":["9d158f59-80b7-4c11-9c0c-8a2b4d936b2d"]}],"operational_intent_positions":[{"operational_intent_id":"03e5572a-f733-49af-bc14-8a18bd53ee39"}],"constraint_provider_associations":[{"constraint_id":"03e5572a-f733-49af-bc14-8a18bd53ee39","constraint_provider_id":""}]};
-
-context.read('rules.js');
-
-if (!handle()) response.status = 404;

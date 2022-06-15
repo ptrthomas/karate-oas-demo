@@ -25,7 +25,7 @@ public class MockRunner {
         config.contextFactory(request -> {
             ServerContext context = new ServerContext(config, request, Collections.singletonMap("utils", Utils.INSTANCE));
             context.setApi(true);
-            request.setResourcePath("index.js");
+            request.setResourcePath("mock.js");
             return context;
         });
         return HttpServer.config(config)

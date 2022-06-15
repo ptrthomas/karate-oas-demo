@@ -3,35 +3,6 @@ const checks = {};
 const samples = {};
 let errors = [];
 const rules = {};
-const handleInternal = function(path, methodInfo) {
-    if (methodInfo.request) {
-        let result = utils.matchEquals(request.body, checks[methodInfo.request]);
-        if (!result.pass) errors.push(result.message);
-    }
-    if (methodInfo.response) {
-        response.body = samples[methodInfo.response];
-    }
-    let rule = rules[path];
-    if (rule) {
-        rule();
-    }
-    if (errors.length) {
-        response.body = errors.join('\n');
-        response.status = 400;
-    }
-};
-const handle = function() {
-    for (const [path, methods] of Object.entries(paths)) {
-        if (request.pathMatches(path)) {
-            const methodInfo = methods[request.method.toLowerCase()];
-            if (methodInfo) {
-                handleInternal(path, methodInfo);
-                return true;
-            }
-        }
-    }
-    return false;
-};
 
 paths['/pet'] = {"post":{"request":"Pet","response":"Pet"},"put":{"request":"Pet","response":"Pet"}};
 paths['/pet/findByStatus'] = {"get":{"response":"sample1"}};
@@ -70,7 +41,3 @@ samples['Order'] = {"id":10,"petId":198772,"quantity":7,"shipDate":"","status":"
 samples['User'] = {"id":10,"username":"theUser","firstName":"John","lastName":"James","email":"john@email.com","password":12345,"phone":12345,"userStatus":1};
 samples['sample7'] = [{"id":10,"username":"theUser","firstName":"John","lastName":"James","email":"john@email.com","password":12345,"phone":12345,"userStatus":1}];
 samples['sample8'] = "";
-
-context.read('rules.js');
-
-if (!handle()) response.status = 404;

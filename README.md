@@ -15,10 +15,10 @@ This is a normal Java / Maven project. Java 11 is required.
 
 OAS file: https://petstore3.swagger.io
 
-* [`index.feature`](src/test/java/specs/petstore/index.feature) - This is the user flow as a Karate test
+* [`test.feature`](src/test/java/specs/petstore/test.feature) - This is the user flow as a Karate test
     * Note that it has a "full cycle": create (POST), read (GET), update (PUT), remove (DELETE)
   * The same test can be used as-is on a "real" implementation of the server, by switching the URL
-* [`index.js`](src/test/java/specs/petstore/index.js) - This is the machine-generated mock file
+* [`spec.js`](src/test/java/specs/petstore/spec.js) - This is the machine-generated mock file
   * All request payloads have been converted into Karate schema validators
   * Examples for all response payloads have also been created from the OAS spec
 * [`rules.js`](src/test/java/specs/petstore/rules.js) - This is the part written by hand, but simple and just a few lines
@@ -29,16 +29,18 @@ OAS file: https://petstore3.swagger.io
   * Since `rules.js` is de-coupled, you can re-generate the main `index.js` from the OAS file whenever it changes
 
 ### Running
-Just execute [`TestRunner`](src/test/java/specs/petstore/TestRunner.java) as a JUnit test. Here is the result:
+Just execute [`TestRunner`](src/test/java/specs/petstore/TestRunner.java) as a JUnit test.
+
+Here is the result. Note how you can view the flow of multiple API calls, human-friendly comments and the details of the HTTP request and response. 
 
 <img src="src/test/resources/petstore-report.jpg" height="600"/>
 
 ## Demo 2 - ASTM [UTM](https://www.unmannedairspace.info/emerging-regulations/astm-publishes-new-international-standard-addressing-uas-utm-performance-and-interoperability)
 * OAS spec: https://github.com/astm-utm/Protocol/blob/master/utm.yaml
 
-* [`index.feature`](src/test/java/specs/utm/index.feature) 
+* [`test.feature`](src/test/java/specs/utm/test.feature) 
   * Here the test makes 2 calls, but one with a request payload that fails a business rule
-* [`index.js`](src/test/java/specs/utm/index.js) - This is the machine-generated mock file
+* [`spec.js`](src/test/java/specs/utm/spec.js) - This is the machine-generated mock file
 * [`rules.js`](src/test/java/specs/utm/rules.js)
   * we implemented a cross-field validation which is concisely represented in JS as follows:
     * `if (altitude_lower.value >= altitude_upper.value) errors.push('altitude_lower should be lower than altitude_upper')`
@@ -48,11 +50,27 @@ Just execute [`TestRunner`](src/test/java/specs/utm/TestRunner.java) as a JUnit 
 
 <img src="src/test/resources/utm-report.jpg" height="500"/>
 
+## Demo 3 - Travel "Flow"
+
+Similar to the Petstore demo, this shows how a sequence of API calls can be documented.
+
+Swagger file: https://github.com/oracle/hospitality-api-docs/blob/main/rest-api-specs/property/rsv.json
+* [`test.feature`](src/test/java/specs/travel/test.feature)
+* [`spec.js`](src/test/java/specs/travel/spec.js) - machine-generated mock file
+* [`rules.js`](src/test/java/specs/travel/rules.js)
+
+What is interesting here is the human-friendly HTML that can be added to the report to describe the API further.
+The HTML templates ([`offers-get.html`](src/test/java/specs/travel/doc/offers-get.html) and [`orders-post.html`](src/test/java/specs/travel/doc/orders-post.html)) can dynamically refer to the HTTP response or any variable in the test.
+
+
+
+<img src="src/test/resources/travel-report.jpg" height="500"/>
+
 ## Demo 3 - Oracle Hospitality
 
 Swagger file: https://github.com/oracle/hospitality-api-docs/blob/main/rest-api-specs/property/rsv.json
-* [`index.feature`](src/test/java/specs/orahosp/rsv/index.feature)
-* [`index.js`](src/test/java/specs/orahosp/rsv/index.js) - machine-generated mock file
+* [`test.feature`](src/test/java/specs/orahosp/rsv/test.feature)
+* [`spec.js`](src/test/java/specs/orahosp/rsv/spec.js) - machine-generated mock file
 * [`rules.js`](src/test/java/specs/orahosp/rsv/rules.js)
 
 # Further Reading
