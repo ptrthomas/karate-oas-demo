@@ -62,7 +62,7 @@ The HTML templates ([`offers-get.html`](src/test/java/specs/travel/doc/offers-ge
 
 <img src="src/test/resources/travel-report.jpg" height="500"/>
 
-## Demo 3 - Oracle Hospitality
+## Demo 4 - Oracle Hospitality
 
 Swagger file: https://github.com/oracle/hospitality-api-docs/blob/main/rest-api-specs/property/rsv.json
 * [`test.feature`](src/test/java/specs/orahosp/rsv/test.feature)
