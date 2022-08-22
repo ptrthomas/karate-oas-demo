@@ -1,7 +1,7 @@
 Feature: using https://petstore3.swagger.io/
 
   Background:
-    * url 'http://localhost:' + karate.properties['server.port']
+    * url 'http://localhost:8080'
 
   Scenario:
 

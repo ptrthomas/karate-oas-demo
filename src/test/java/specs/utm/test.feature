@@ -1,7 +1,7 @@
 Feature: using https://github.com/astm-utm/Protocol/blob/master/utm.yaml
 
   Background:
-    * def urlBase = 'http://localhost:' + karate.properties['server.port']
+    * def urlBase = 'http://localhost:8080'
 
   Scenario: this will pass
     * url urlBase

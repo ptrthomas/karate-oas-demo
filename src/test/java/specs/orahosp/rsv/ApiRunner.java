@@ -1,4 +1,4 @@
-package specs.petstore;
+package specs.orahosp.rsv;
 
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
@@ -9,18 +9,18 @@ import specs.MockRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TestRunner {
+class ApiRunner {
 
     static HttpServer server;
 
     @BeforeAll
     static void beforeAll() {
-        server = MockRunner.start("src/test/java/specs/petstore", 0);
+        server = MockRunner.start("src/test/java/specs/orahosp/rsv", 8080);
     }
 
     @Test
     void testClient() {
-        Results results = Runner.path("classpath:specs/petstore/test.feature")
+        Results results = Runner.path("classpath:specs/orahosp/rsv/test.feature")
                 .systemProperty("server.port", server.getPort() + "")
                 .parallel(1);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());

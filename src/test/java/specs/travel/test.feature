@@ -1,7 +1,7 @@
 Feature: Travel Use Case - End to End Flow
 
   Background:
-    * url 'http://localhost:' + karate.properties['server.port']
+    * url 'http://localhost:8080'
 
   Scenario: availability search, order creation, modification and delete
     # search for offers

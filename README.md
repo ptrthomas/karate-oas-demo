@@ -29,7 +29,7 @@ OAS file: https://petstore3.swagger.io
   * Since `rules.js` is de-coupled, you can re-generate the main `index.js` from the OAS file whenever it changes
 
 ### Running
-Just execute [`TestRunner`](src/test/java/specs/petstore/TestRunner.java) as a JUnit test.
+Just execute [`ApiRunner`](src/test/java/specs/petstore/ApiRunner.java) as a JUnit test.
 
 Here is the result. Note how you can view the flow of multiple API calls, human-friendly comments and the details of the HTTP request and response. 
 
@@ -46,7 +46,7 @@ Here is the result. Note how you can view the flow of multiple API calls, human-
     * `if (altitude_lower.value >= altitude_upper.value) errors.push('altitude_lower should be lower than altitude_upper')`
 
 ### Running
-Just execute [`TestRunner`](src/test/java/specs/utm/TestRunner.java) as a JUnit test. Note how the second call failed with a readable error message.
+Just execute [`ApiRunner`](src/test/java/specs/utm/ApiRunner.java) as a JUnit test. Note how the second call failed with a readable error message.
 
 <img src="src/test/resources/utm-report.jpg" height="500"/>
 

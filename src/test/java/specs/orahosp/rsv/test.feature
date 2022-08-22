@@ -1,7 +1,7 @@
 Feature:
 
   Background:
-    * def urlBase = 'http://localhost:' + karate.properties['server.port']
+    * def urlBase = 'http://localhost:8080'
 
   Scenario:
     * url urlBase

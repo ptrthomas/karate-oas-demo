@@ -1,8 +1,8 @@
-context.read('spec.js');
-context.read('rules.js');
+context.read('this:spec.js');
+context.read('this:rules.js');
 const handleInternal = function(path, methodInfo) {
     if (methodInfo.request) {
-        let result = utils.matchEquals(request.body, checks[methodInfo.request]);
+        let result = context.match(request.body, checks[methodInfo.request]);
         if (!result.pass) errors.push(result.message);
     }
     if (methodInfo.response) {
