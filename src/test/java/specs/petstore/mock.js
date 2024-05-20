@@ -1,4 +1,4 @@
-context.read('this:spec.js');
+context.read('this:petstore.js');
 context.read('this:rules.js');
 const handleInternal = function(path, methodInfo) {
     if (methodInfo.request) {

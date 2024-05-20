@@ -3,9 +3,10 @@ package specs.petstore;
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 import com.intuit.karate.http.HttpServer;
+import com.intuit.karate.http.ServerConfig;
+import com.intuit.karate.http.ServerContext;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import specs.MockRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,7 +16,18 @@ class ApiRunner {
 
     @BeforeAll
     static void beforeAll() {
-        server = MockRunner.start("src/test/java/specs/petstore", 8080);
+        ServerConfig config = new ServerConfig("src/test/java/specs/petstore")
+                .useGlobalSession(true);
+        config.contextFactory(request -> {
+            ServerContext context = new ServerContext(config, request);
+            context.setApi(true);
+            request.setResourcePath("mock.js");
+            return context;
+        });
+        server = HttpServer.config(config)
+                .http(8080)
+                .corsEnabled(true)
+                .build();
     }
 
     @Test
