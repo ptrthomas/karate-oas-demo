@@ -20,7 +20,7 @@ OAS file: https://petstore3.swagger.io
 * [`test.feature`](src/test/java/specs/petstore/test.feature) - This is the user flow as a Karate test
     * Note that it has a "full cycle": create (POST), read (GET), update (PUT), remove (DELETE)
   * The same test can be used as-is against a "real" implementation of the server, by switching the URL
-* [`petstore.js`](src/test/java/specs/petstore/spec.js) - This is the machine-generated mock file that encodes all the information from the Open API spec file [`petstore.yaml`](src/test/java/specs/petstore/petstore.yaml)
+* [`petstore.js`](src/test/java/specs/petstore/petstore.js) - This is the machine-generated mock file that encodes all the information from the Open API spec file [`petstore.yaml`](src/test/java/specs/petstore/petstore.yaml)
   * All request payloads have been converted into Karate schema validators
   * Examples for all response payloads have also been created from the OAS spec
 * [`rules.js`](src/test/java/specs/petstore/rules.js) - This is the part written by hand, but simple and just a few lines
@@ -29,7 +29,7 @@ OAS file: https://petstore3.swagger.io
   * Note how the status code is handled for a DELETE (201) and a not-found scenario (404).
   * There is no-limit to the logic you can add, as long as you are willing to write some simple JS
   * Since `rules.js` is de-coupled, you can re-generate the core `petstore.js` from the OAS file whenever it changes
-* [`mock.js`](src/test/java/specs/petstore/mock.js) - This is the "entry point" for the mock. This code is "generic" and can be the same for any Open API or Swagger file. Note that the [Karate JavaScript mocks](https://github.com/karatelabs/karate/wiki/Karate-JavaScript-Mocks) are being used (not the `*.feature` file based approach). The first line points to `petstore.js` and can be customized if needed.
+* [`mock.js`](src/test/java/specs/petstore/mock.js) - This is the "entry point" for the mock. This code is "generic" and can be the same for any Open API or Swagger file. Note that [Karate JavaScript mocks](https://github.com/karatelabs/karate/wiki/Karate-JavaScript-Mocks) are being used (not the `*.feature` file based approach). The first line points to `petstore.js` and can be customized if needed.
 
 ### Running
 Just execute [`ApiRunner`](src/test/java/specs/petstore/ApiRunner.java) as a JUnit test. It invokes the [`mock.js`](src/test/java/specs/petstore/mock.js) entry point.
